@@ -1,0 +1,885 @@
+import React, { useEffect, useState, useRef } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import StoreHandler from '../../redux/StoreHandler'
+import UserAction from '../../redux/action/userAction'
+
+import Images from '../../assets/Images'
+import Icons from '../../assets/Icons'
+import Loading from '../Loading'
+import { CostInput, TextInput, SelectInput, RadioInput } from '../Inputs'
+import AlertPopup from '../AlertPopup'
+import hospital_Handler from '../../Handlers/hospital/hospital'
+
+
+const Finance = () => {
+
+    const [isLoading, setIsLoading] = useState(false)
+    const [warningAlert, setWarningAlert] = useState(false)
+    const [apiFailedMessage, setApiFailedMessage] = useState('Invalid Inputs, Please try again with vaild Inputs!')
+
+
+    const hospital_Handler = new hospital_Handler()
+    const store = useSelector((store) => store)
+    const dispatch = useDispatch()
+    const { updateState } = new UserAction
+
+    const storeHandler = new StoreHandler({
+        dataStack: ['hospital'],
+        dispatch: dispatch,
+        updateState: updateState,
+    })
+
+    const LoadStoreData = async () => {
+        setIsLoading(true)
+        let resolved = await storeHandler.init()
+        setIsLoading(false)
+    }
+
+    const isFinanceSettings = store.user && store.user.hospital && Object.keys(store.user.hospital).length ? store.user.hospital.finance_settings && Object.keys(store.user.hospital.finance_settings).length : false
+
+    const hospitalSettingsProfile = store.user && store.user.hospital ? store.user.hospital.settings : undefined
+    const currency_type = hospitalSettingsProfile ? hospitalSettingsProfile.currency || "₹" : "₹"
+
+
+    const [FinanceSettings, setFinanceSettings] = useState(isFinanceSettings ? store.user.hospital.finance_settings : {})
+
+    const Taxes_ResultView = ({ menu, tableBody, setTableBody, inputChanged, handleDiscardChanges }) => {
+
+        const handleInputChange = (value, index, field) => {
+
+            console.log(field, 'field');
+
+            setTableBody((prevTableBody) => {
+                let updatedTableBody = [...prevTableBody];
+
+
+
+                if (field == "isDefault") {
+
+                    updatedTableBody = updatedTableBody.map(itm => {
+                        return {
+                            ...itm,
+                            [field]: false,
+                        }
+                    })
+                }
+
+                updatedTableBody[index] = {
+                    ...updatedTableBody[index],
+                    [field]: value,
+                };
+
+
+
+                return updatedTableBody;
+            });
+
+        };
+
+        const handleAddItemBtn = () => {
+
+            const updatedTableBody = [...tableBody]
+            updatedTableBody.push(
+                {
+                    name: "",
+                    isDefault: false,
+                    isActive: true,
+                    index: updatedTableBody.length,
+                }
+            )
+            setTableBody(updatedTableBody);
+
+        }
+        const handleDeleteItemBtn = (event, index) => {
+
+            const updatedTableBody = [...tableBody]
+
+            if (updatedTableBody.length == 1) return
+            updatedTableBody.splice(index, 1)
+            setTableBody(updatedTableBody);
+
+        }
+
+        return (
+            <>
+                <div className='editview-drag-table' id='fielsettings-editview-drag-table'>
+                    <table >
+                        <thead>
+                            <tr>
+                                <th>Active</th>
+                                <th>Name</th>
+                                <th>Percentage</th>
+                                <th>Default</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id='fielsettings-editview-table-body'>
+                            {tableBody.map((itm, index) => (
+
+                                <tr key={index}>
+                                    <td className='' data-label="Active">
+
+                                        {index != 0 ?
+                                            <RadioInput props={{
+                                                id: `${itm.id}-Active`,
+                                                value: itm.isActive,
+                                                isIcon: false,
+                                                icon: "",
+                                                inputType: "checkbox",
+                                                name: "table-default-radio",
+                                                setValue: (value) => handleInputChange(value, index, 'isActive')
+                                            }} />
+                                            :
+                                            <span
+                                                className='checkboxinput-main'
+                                                dangerouslySetInnerHTML={{ __html: Icons.general.checkbox_disabled }}
+                                            >
+                                            </span>
+                                        }
+
+                                    </td>
+
+                                    <td data-label="Name">
+
+                                        <TextInput props={{
+                                            id: `${itm.id}-Name`,
+                                            value: itm.name,
+                                            isIcon: false,
+                                            icon: "$",
+                                            isRequired: true,
+                                            setValue: (value) => handleInputChange(value, index, 'name')
+                                        }} />
+
+                                    </td>
+                                    <td data-label="Percentage">
+
+                                        <CostInput props={{
+                                            id: `${itm.id}-Percentage`,
+                                            isCostMethod: false,
+                                            currency_type: currency_type,
+                                            value: itm.value,
+                                            isIcon: true,
+                                            isRequired: true,
+                                            icon: "%",
+                                            setValue: (value, value_type = undefined) => handleInputChange(value, index, 'value')
+                                        }} />
+
+                                    </td>
+
+                                    <td data-label="Default">
+
+
+                                        <RadioInput props={{
+                                            id: `${itm.id}-Default`,
+                                            value: itm.isDefault,
+                                            isIcon: false,
+                                            icon: "",
+                                            inputType: "radio",
+                                            name: "table-default-radio",
+                                            setValue: (value) => handleInputChange(value, index, 'isDefault')
+                                        }} />
+
+
+                                    </td>
+
+
+                                    {index != 0 ?
+                                        <td className='close'
+                                            data-label="Close"
+                                            dangerouslySetInnerHTML={{ __html: Icons.general.close_small }}
+                                            onClick={(e) => handleDeleteItemBtn(e, index)}
+                                        ></td>
+                                        : null}
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                    <div className='editview-tabel-additem'>
+                        <div className='add-item-btn' onClick={(e) => handleAddItemBtn()}>
+                            <span className='icon' dangerouslySetInnerHTML={{ __html: Icons.general.add_btn }}></span>
+                            <span className='label'>Add new option</span>
+                        </div>
+                    </div>
+                </div>
+                <div className={`editview-button-items  ${inputChanged ? '' : 'editview-button-items-disabled'}`}>
+                    <div className="editview-button-item" onClick={(e) => handleDiscardChanges()}>
+                        <span className='label'>Discard Changes</span>
+                    </div>
+                    <button type='submit' className="editview-button-item button-save">
+                        <span
+                            className='icon'
+                            dangerouslySetInnerHTML={{ __html: Icons.general.save }}
+                        ></span>
+                        <span className='label' >Save Changes</span>
+                    </button>
+                </div>
+            </>
+        );
+
+
+    }
+    const Insurances_ResultView = ({ menu, tableBody, setTableBody, inputChanged, handleDiscardChanges }) => {
+
+
+        const handleInputChange = (value, index, field) => {
+
+            setTableBody((prevTableBody) => {
+                let updatedTableBody = [...prevTableBody];
+                if (field == "isDefault") {
+
+                    updatedTableBody = updatedTableBody.map(itm => {
+                        return {
+                            ...itm,
+                            [field]: false,
+                        }
+                    })
+                }
+                updatedTableBody[index] = {
+                    ...updatedTableBody[index],
+                    [field]: value,
+                };
+
+                return updatedTableBody;
+            });
+
+        };
+
+        const handleAddItemBtn = () => {
+
+            const updatedTableBody = [...tableBody]
+            updatedTableBody.push(
+                {
+                    name: "",
+                    isDefault: false,
+                    isActive: true,
+                    index: updatedTableBody.length,
+                }
+            )
+            setTableBody(updatedTableBody);
+
+        }
+        const handleDeleteItemBtn = (event, index) => {
+
+            const updatedTableBody = [...tableBody]
+
+            if (updatedTableBody.length == 1) return
+            updatedTableBody.splice(index, 1)
+            setTableBody(updatedTableBody);
+
+        }
+
+        return (
+            <>
+                <div className='editview-drag-table' id='fielsettings-editview-drag-table'>
+                    <table >
+                        <thead>
+                            <tr>
+                                <th>Active</th>
+                                <th>Name</th>
+                                <th>Cost</th>
+                                <th>Default</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id='fielsettings-editview-table-body'>
+                            {tableBody.map((itm, index) => (
+
+                                <tr key={index}>
+                                    <td className='' data-label="Active">
+
+                                        {index != 0 ?
+                                            <RadioInput props={{
+                                                id: `${itm.id}-isActive`,
+                                                value: itm.isActive,
+                                                isIcon: false,
+                                                icon: "",
+                                                inputType: "checkbox",
+                                                name: "table-default-radio",
+                                                setValue: (value) => handleInputChange(value, index, 'isActive')
+                                            }} />
+                                            :
+                                            <span
+                                                className='checkboxinput-main'
+                                                dangerouslySetInnerHTML={{ __html: Icons.general.checkbox_disabled }}
+                                            >
+                                            </span>
+                                        }
+
+                                    </td>
+
+                                    <td data-label="Name">
+
+                                        <TextInput props={{
+                                            id: `${itm.id}-Name`,
+                                            value: itm.name,
+                                            isIcon: false,
+                                            isRequired: true,
+                                            icon: "$",
+                                            setValue: (value) => handleInputChange(value, index, 'name')
+                                        }} />
+
+                                    </td>
+                                    <td data-label="Cost">
+
+                                        <CostInput props={{
+                                            id: `${itm.id}-Cost`,
+                                            isCostMethod: true,
+                                            value: itm.value,
+                                            currency_type: currency_type,
+                                            costMethodValue: itm.value_type,
+                                            isIcon: false,
+                                            isRequired: true,
+                                            icon: "%",
+                                            setValue: (value, value_type = undefined) => {
+                                                handleInputChange(value, index, 'value')
+                                                handleInputChange(value_type, index, 'value_type')
+                                            }
+                                        }} />
+
+                                    </td>
+
+                                    <td data-label="Default">
+
+
+                                        <RadioInput props={{
+                                            id: `${itm.id}-Default`,
+                                            value: itm.isDefault,
+                                            isIcon: false,
+                                            icon: "",
+                                            name: "table-default-radio",
+                                            setValue: (value) => handleInputChange(value, index, 'isDefault')
+                                        }} />
+
+                                    </td>
+                                    {index != 0 ?
+                                        <td className='close'
+                                            data-label="Close"
+                                            dangerouslySetInnerHTML={{ __html: Icons.general.close_small }}
+                                            onClick={(e) => handleDeleteItemBtn(e, index)}
+                                        ></td>
+                                        : null}
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                    <div className='editview-tabel-additem'>
+                        <div className='add-item-btn' onClick={(e) => handleAddItemBtn()}>
+                            <span className='icon' dangerouslySetInnerHTML={{ __html: Icons.general.add_btn }}></span>
+                            <span className='label'>Add new option</span>
+                        </div>
+                    </div>
+                </div>
+                <div className={`editview-button-items  ${inputChanged ? '' : 'editview-button-items-disabled'}`}>
+                    <div className="editview-button-item" onClick={(e) => handleDiscardChanges()}>
+                        <span className='label'>Discard Changes</span>
+                    </div>
+                    <button type='submit' className="editview-button-item button-save">
+                        <span
+                            className='icon'
+                            dangerouslySetInnerHTML={{ __html: Icons.general.save }}
+                        ></span>
+                        <span className='label' >Save Changes</span>
+                    </button>
+                </div>
+            </>
+        );
+
+
+    }
+    const Markups_ResultView = ({ menu, tableBody, setTableBody, inputChanged, handleDiscardChanges }) => {
+
+
+        const handleInputChange = (value, index, field) => {
+
+            setTableBody((prevTableBody) => {
+                let updatedTableBody = [...prevTableBody];
+                if (field == "isDefault") {
+
+                    updatedTableBody = updatedTableBody.map(itm => {
+                        return {
+                            ...itm,
+                            [field]: false,
+                        }
+                    })
+                }
+                updatedTableBody[index] = {
+                    ...updatedTableBody[index],
+                    [field]: value,
+                };
+
+                return updatedTableBody;
+            });
+
+        };
+
+        const handleAddItemBtn = () => {
+
+            const updatedTableBody = [...tableBody]
+            updatedTableBody.push(
+                {
+                    name: "",
+                    isDefault: false,
+                    isActive: true,
+                    index: updatedTableBody.length,
+                }
+            )
+            setTableBody(updatedTableBody);
+
+        }
+        const handleDeleteItemBtn = (event, index) => {
+
+            const updatedTableBody = [...tableBody]
+
+            if (updatedTableBody.length == 1) return
+            updatedTableBody.splice(index, 1)
+            setTableBody(updatedTableBody);
+
+        }
+
+        return (
+            <>
+                <div className='editview-drag-table' id='fielsettings-editview-drag-table'>
+                    <table >
+                        <thead>
+                            <tr>
+                                <th>Active</th>
+                                <th>Name</th>
+                                <th>Cost</th>
+                                <th>Default</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id='fielsettings-editview-table-body'>
+                            {tableBody.map((itm, index) => (
+
+                                <tr key={index}>
+                                    <td className='' data-label="Active">
+
+                                        {index != 0 ?
+                                            <RadioInput props={{
+                                                value: itm.isActive,
+                                                isIcon: false,
+                                                icon: "",
+                                                inputType: "checkbox",
+                                                name: "table-default-radio",
+                                                setValue: (value) => handleInputChange(value, index, 'isActive')
+                                            }} />
+                                            :
+                                            <span
+                                                className='checkboxinput-main'
+                                                dangerouslySetInnerHTML={{ __html: Icons.general.checkbox_disabled }}
+                                            >
+                                            </span>
+                                        }
+
+                                    </td>
+
+                                    <td data-label="Name">
+
+                                        <TextInput props={{
+                                            id: `${itm.id}-Active`,
+                                            value: itm.name,
+                                            isIcon: false,
+                                            isRequired: true,
+                                            icon: "$",
+                                            setValue: (value) => handleInputChange(value, index, 'name')
+                                        }} />
+
+                                    </td>
+                                    <td data-label="Cost">
+
+                                        <CostInput props={{
+                                            id: `${itm.id}-Cost`,
+                                            isCostMethod: true,
+                                            value: itm.value,
+                                            costMethodValue: itm.value_type,
+                                            currency_type: currency_type,
+                                            isIcon: false,
+                                            isRequired: true,
+                                            icon: "%",
+                                            setValue: (value, value_type = undefined) => {
+                                                handleInputChange(value, index, 'value')
+                                                handleInputChange(value_type, index, 'value_type')
+                                            }
+                                        }} />
+
+                                    </td>
+
+                                    <td data-label="Default">
+                                        <RadioInput props={{
+                                            id: `${itm.id}-Default`,
+                                            value: itm.isDefault,
+                                            isIcon: false,
+                                            icon: "",
+                                            name: "table-default-radio",
+                                            setValue: (value) => handleInputChange(value, index, 'isDefault')
+                                        }} />
+
+                                    </td>
+                                    {index != 0 ?
+                                        <td className='close'
+                                            data-label="Close"
+                                            dangerouslySetInnerHTML={{ __html: Icons.general.close_small }}
+                                            onClick={(e) => handleDeleteItemBtn(e, index)}
+                                        ></td>
+                                        : null}
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                    <div className='editview-tabel-additem'>
+                        <div className='add-item-btn' onClick={(e) => handleAddItemBtn()}>
+                            <span className='icon' dangerouslySetInnerHTML={{ __html: Icons.general.add_btn }}></span>
+                            <span className='label'>Add new option</span>
+                        </div>
+                    </div>
+                </div>
+                <div className={`editview-button-items  ${inputChanged ? '' : 'editview-button-items-disabled'}`}>
+                    <div className="editview-button-item" onClick={(e) => handleDiscardChanges()}>
+                        <span className='label'>Discard Changes</span>
+                    </div>
+                    <button type='submit' className="editview-button-item button-save">
+                        <span
+                            className='icon'
+                            dangerouslySetInnerHTML={{ __html: Icons.general.save }}
+                        ></span>
+                        <span className='label' >Save Changes</span>
+                    </button>
+                </div>
+            </>
+        );
+
+
+    }
+
+    const Overheads_ResultView = ({ menu, tableBody, setTableBody, inputChanged, handleDiscardChanges }) => {
+
+
+        const handleInputChange = (value, index, field) => {
+
+            setTableBody((prevTableBody) => {
+                let updatedTableBody = [...prevTableBody];
+                if (field == "isDefault") {
+
+                    updatedTableBody = updatedTableBody.map(itm => {
+                        return {
+                            ...itm,
+                            [field]: false,
+                        }
+                    })
+                }
+                updatedTableBody[index] = {
+                    ...updatedTableBody[index],
+                    [field]: value,
+                };
+
+                return updatedTableBody;
+            });
+
+        };
+
+        const handleAddItemBtn = () => {
+
+            const updatedTableBody = [...tableBody]
+            updatedTableBody.push(
+                {
+                    name: "",
+                    isDefault: false,
+                    isActive: true,
+                    index: updatedTableBody.length,
+                }
+            )
+            setTableBody(updatedTableBody);
+
+        }
+        const handleDeleteItemBtn = (event, index) => {
+
+            const updatedTableBody = [...tableBody]
+
+            if (updatedTableBody.length == 1) return
+            updatedTableBody.splice(index, 1)
+            setTableBody(updatedTableBody);
+
+        }
+
+        return (
+            <>
+                <div className='editview-drag-table' id='fielsettings-editview-drag-table'>
+                    <table >
+                        <thead>
+                            <tr>
+                                <th>Active</th>
+                                <th>Name</th>
+                                <th>Cost</th>
+                                <th>Default</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id='fielsettings-editview-table-body'>
+                            {tableBody.map((itm, index) => (
+
+                                <tr key={index}>
+                                    <td className='' data-label="Active">
+
+                                        {index != 0 ?
+                                            <RadioInput props={{
+                                                value: itm.isActive,
+                                                isIcon: false,
+                                                icon: "",
+                                                inputType: "checkbox",
+                                                name: "table-default-radio",
+                                                setValue: (value) => handleInputChange(value, index, 'isActive')
+                                            }} />
+                                            :
+                                            <span
+                                                className='checkboxinput-main'
+                                                dangerouslySetInnerHTML={{ __html: Icons.general.checkbox_disabled }}
+                                            >
+                                            </span>
+                                        }
+
+                                    </td>
+
+                                    <td data-label="Name">
+
+                                        <TextInput props={{
+                                            id: `${itm.id}-Name`,
+                                            value: itm.name,
+                                            isIcon: false,
+                                            isRequired: true,
+                                            icon: "$",
+                                            setValue: (value) => handleInputChange(value, index, 'name')
+                                        }} />
+
+                                    </td>
+                                    <td data-label="Cost">
+
+                                        <CostInput props={{
+                                            id: `${itm.id}-Cost`,
+                                            isCostMethod: true,
+                                            value: itm.value,
+                                            currency_type: currency_type,
+                                            isRequired: true,
+                                            costMethodValue: itm.value_type,
+                                            isIcon: false,
+                                            icon: "%",
+                                            setValue: (value, value_type = undefined) => {
+                                                handleInputChange(value, index, 'value')
+                                                handleInputChange(value_type, index, 'value_type')
+                                            }
+                                        }} />
+
+                                    </td>
+                                    <td data-label="Default">
+
+                                        <RadioInput props={{
+                                            id: `${itm.id}-Default`,
+                                            value: itm.isDefault,
+                                            isIcon: false,
+                                            icon: "",
+                                            name: "table-default-radio",
+                                            setValue: (value) => handleInputChange(value, index, 'isDefault')
+                                        }} />
+
+                                    </td>
+
+
+                                    {index != 0 ?
+                                        <td className='close'
+                                            data-label="Close"
+                                            dangerouslySetInnerHTML={{ __html: Icons.general.close_small }}
+                                            onClick={(e) => handleDeleteItemBtn(e, index)}
+                                        ></td>
+                                        : null}
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                    <div className='editview-tabel-additem'>
+                        <div className='add-item-btn' onClick={(e) => handleAddItemBtn()}>
+                            <span className='icon' dangerouslySetInnerHTML={{ __html: Icons.general.add_btn }}></span>
+                            <span className='label'>Add new option</span>
+                        </div>
+                    </div>
+                </div>
+                <div className={`editview-button-items  ${inputChanged ? '' : 'editview-button-items-disabled'}`}>
+                    <div className="editview-button-item" onClick={(e) => handleDiscardChanges()}>
+                        <span className='label'>Discard Changes</span>
+                    </div>
+                    <button type='submit' className="editview-button-item button-save">
+                        <span
+                            className='icon'
+                            dangerouslySetInnerHTML={{ __html: Icons.general.save }}
+                        ></span>
+                        <span className='label' >Save Changes</span>
+                    </button>
+                </div>
+            </>
+        );
+
+
+    }
+
+
+    const EditView = () => {
+
+        const [selectedMenu, setSelectedMenu] = useState('')
+        const selectedMenuRef = useRef(null);
+
+        const [taxes, setTaxes] = useState(isFinanceSettings ? FinanceSettings.taxes : []);
+        const [insurances, setInsurances] = useState(isFinanceSettings ? FinanceSettings.insurances : []);
+        const [markups, setMarkup] = useState(isFinanceSettings ? FinanceSettings.markups : []);
+        const [overHeads, setOverHeads] = useState(isFinanceSettings ? FinanceSettings.overHeads : []);
+
+
+        const [inputChanged, setInputChanged] = useState(true)
+
+        const sidebar_menus = [
+            "Taxes",
+            "Insurance",
+            "Markups",
+            "Overheads",
+        ]
+
+
+        const saveEvent = async (e) => {
+            e.preventDefault()
+
+            let userdetials = JSON.parse(localStorage.getItem("userdetials"))
+
+            let updated_data = {
+                taxes: taxes || [],
+                insurances: insurances || [],
+                markups: markups || [],
+                overHeads: overHeads || [],
+                user_id: userdetials.id,
+                hospital_id: userdetials.hospital_id
+            }
+            setIsLoading(true)
+            let response = await hospital_Handler.updateFinanceSettingsHandler(updated_data)
+
+            if (response.success) {
+                LoadStoreData()
+                setIsLoading(false)
+            }
+            else {
+                setIsLoading(false)
+                setWarningAlert(true)
+                setApiFailedMessage(`${response.message}, Please try again!`)
+            }
+        }
+
+        useEffect(() => {
+            setTimeout(() => {
+                setSelectedMenu(sidebar_menus[0])
+            }, 0)
+        }, [])
+
+
+
+        useEffect(() => {
+
+            if (selectedMenuRef.current) {
+                const menu = selectedMenuRef.current.textContent;
+                setSelectedMenu(menu);
+            }
+        }, [selectedMenu]);
+
+
+
+        // useEffect(() => {
+
+        //     let isChanged = false
+
+        //     if (isFinanceSettings && taxes != FinanceSettings.taxes) isChanged = true
+        //     if (isFinanceSettings && insurances != FinanceSettings.insurances) isChanged = true
+        //     if (isFinanceSettings && markups != FinanceSettings.markups) isChanged = true
+        //     if (isFinanceSettings && overHeads != FinanceSettings.overHeads) isChanged = true
+
+        //     setInputChanged(isChanged)
+
+        // }, [taxes, insurances, markups, overHeads])
+
+        const handleDiscardChanges = () => {
+
+            setTaxes(isFinanceSettings ? FinanceSettings.taxes : []);
+            setInsurances(isFinanceSettings ? FinanceSettings.insurances : []);
+            setMarkup(isFinanceSettings ? FinanceSettings.markups : []);
+            setOverHeads(isFinanceSettings ? FinanceSettings.overHeads : []);
+
+        }
+
+        return (
+            <>
+                <form className="settingsContent-editview-main" onSubmit={saveEvent}>
+
+                    <div className="settingsContent-content-title">Finance</div>
+
+                    <div className="settingsContent-editview-content">
+                        <div className="editview-content-sidebar-main">
+                            <div className="editview-sidebar">
+
+                                {sidebar_menus.map((menu, i) => (
+                                    <div
+                                        className={`editview-sidebar-item ${selectedMenu === menu ? 'editview-sidebar-item-active' : ''}`}
+                                        key={i}
+                                        onClick={() => setSelectedMenu(menu)}
+                                        ref={selectedMenu == menu ? selectedMenuRef : null}
+                                    >
+                                        {menu}
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="editview-sidebar-result" ref={selectedMenuRef}>
+                                {
+                                    selectedMenu == "Taxes" ? <Taxes_ResultView menu={selectedMenu} setTableBody={setTaxes} tableBody={taxes} inputChanged={inputChanged} handleDiscardChanges={handleDiscardChanges} />
+                                        : selectedMenu == "Insurance" ? <Insurances_ResultView menu={selectedMenu} setTableBody={setInsurances} tableBody={insurances} inputChanged={inputChanged} handleDiscardChanges={handleDiscardChanges} />
+                                            : selectedMenu == "Markups" ? <Markups_ResultView menu={selectedMenu} setTableBody={setMarkup} tableBody={markups} inputChanged={inputChanged} handleDiscardChanges={handleDiscardChanges} />
+                                                : selectedMenu == "Overheads" ? <Overheads_ResultView menu={selectedMenu} setTableBody={setOverHeads} tableBody={overHeads} inputChanged={inputChanged} handleDiscardChanges={handleDiscardChanges} />
+                                                    : null
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </>
+        )
+    }
+
+    const HandleWarningConfirm = (confirmation) => {
+
+        setWarningAlert(false)
+    }
+
+
+    return (
+        <>
+            {isLoading ?
+                <Loading
+                    props={{
+                        isMainLogo: false,
+                        isLabel: true
+                    }} />
+                : null}
+            {warningAlert ?
+
+                <AlertPopup
+                    props={{
+                        type: "delete",
+                        actionBtnOption: { icon: Icons.general.warning, label: "Yea, Ok" },
+                        heading: "Something went Wrong!",
+                        message: apiFailedMessage || "Invalid Inputs, Please try again with vaild Inputs!",
+                        callback: (confirmation) => HandleWarningConfirm(confirmation)
+                    }} />
+
+                : null}
+
+            <div className='project-settingsContent-main'>
+                <EditView />
+            </div>
+        </>
+    )
+}
+
+export default Finance;

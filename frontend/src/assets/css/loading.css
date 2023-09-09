@@ -1,0 +1,45 @@
+:root {
+    --radius: 50;
+    --PI: 3.14159265358979;
+    --circumference: calc(var(--PI) * var(--radius) * 2px)
+  }
+
+
+  .loading-popup-container {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+  }
+ .loading-popup-container .loading-spinner{
+   
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+ }
+  .loading-popup-container .loading-spinner-circle circle {
+    stroke: var(--primary-color);
+    stroke-width: 4;
+    fill: transparent;
+    transform-origin: center;
+    stroke-dasharray: var(--circumference);
+    animation: spinner 2s ease-out infinite;
+  }
+  .loading-popup-container .loading-label{
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--black-font-color);
+  }
+
+  @keyframes spinner {
+    from {
+      stroke-dashoffset: var(--circumference);
+      stroke: var(--primary-color);
+      transform: rotateZ(0deg)
+    }
+    to {
+      stroke-dashoffset: calc(var(--circumference) * -1);
+      stroke: var(--primary-dark-color);
+      transform: rotateZ(720deg)
+    }
+  }

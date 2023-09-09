@@ -1,0 +1,600 @@
+
+
+
+.project-addpatient-main {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-color);
+}
+
+.project-addpatient-main .addpatient-content {
+    width: 98%;
+    height: 96%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 10px;
+    background: var(--bg-light-color);
+    border: 1px solid var(--border-light-color);
+}
+.project-addpatient-main .addpatient-header {
+    
+
+    width: 100%;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid var(--border-light-color);
+}
+.project-addpatient-main .addpatient-header .header-left,
+.project-addpatient-main .addpatient-header .header-right
+{
+    
+
+    width: max-content;
+    height: 100%;
+
+    display: flex;
+    align-items: center;    
+}
+.project-addpatient-main .addpatient-header .header-right
+{
+    padding-right: 1rem;
+    
+}
+
+.project-addpatient-main .addpatient-header .header-right .header-item
+{
+    
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.project-addpatient-main .addpatient-header .header-right .header-preview
+{
+    cursor: pointer;
+    user-select: none;
+    color: var(--primary-color);
+    font-size: 15px;
+    font-weight: 500;
+    padding: .5rem;
+}
+.project-addpatient-main .addpatient-header .header-right .header-preview .icon
+{
+ margin-top: 2px;
+ width: 18px;
+ height: 18px;
+}
+.project-addpatient-main .addpatient-header .header-right .header-preview .icon  svg
+{
+ width: inherit;
+ height: inherit;
+}
+.project-addpatient-main .addpatient-header .header-right .header-preview .icon  svg path
+{
+    stroke-width: 2;
+    stroke: var(--primary-color);
+}
+.project-addpatient-main .addpatient-header .header-title{
+    
+
+   font-size: 22px;
+   font-weight: 600;
+
+}
+.project-addpatient-main .addpatient-header .header-back-btn{
+    
+    margin-top: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: all .25s;
+}
+
+
+.project-addpatient-main .addpatient-header .header-back-btn:hover{
+
+    background: var(--hover-color);
+}
+
+.project-addpatient-main .addpatient-sections{
+
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-addpatient-main .addpatient-sections .patientbrief-sections-toggle-main{
+    width: 100%;
+    height: 40px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: .5rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+.project-addpatient-main .addpatient-sections .patientbrief-sections-toggle-main .toggle-item{
+    width: max-content;
+    height: inherit;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    cursor: pointer;
+    color: var(--gray-font-color);
+    white-space: nowrap;
+}
+.project-addpatient-main .addpatient-sections .patientbrief-sections-toggle-main .toggle-item-active{
+    border-bottom: 3px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.project-addpatient-main .addpatient-section{
+
+    width: 100%;
+    height: max-content;
+    padding: 1rem; 
+    border-bottom: 1px solid var(--border-light-color);
+    display: flex;
+    flex-direction: column;
+
+    padding-bottom: 2rem; 
+}
+.project-addpatient-main .addpatient-section .section-profile-img{
+    width: max-content;
+    display: flex;
+}
+.project-addpatient-main .addpatient-section .section-profile-img input{
+   display: none;
+}
+.project-addpatient-main .addpatient-section .section-profile-img label{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 20px;
+}
+.project-addpatient-main .addpatient-section .section-profile-img label .left{
+   width: 100px;
+   height: 100px;
+   border-radius: 1000px;
+}
+.project-addpatient-main .addpatient-section .section-profile-img label .left img{
+   width: inherit;
+   height: inherit;
+   border-radius: inherit;
+   object-fit: cover;
+}
+.project-addpatient-main .addpatient-section .section-profile-img label .right{
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+}
+.project-addpatient-main .addpatient-section .section-profile-img label .right .label{
+   font-weight: 550;
+   font-size: 20px;
+}
+.project-addpatient-main .addpatient-section .section-profile-img label .right .button{
+   width: max-content;
+   height: 30px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 0 .5rem;
+   color: var(--light-font-color);
+   background:var(--primary-color) ;
+   border-radius: 7px;
+   cursor: pointer;
+}
+.project-addpatient-main .addpatient-section .section-full-itm{
+
+    width: 100%;
+    height: max-content;
+   display: flex;
+   flex-direction: column;
+   margin-top: 1.5rem;
+}
+
+.project-addpatient-main .addpatient-section .section-full-itm .head{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: .5rem;  
+ }
+  .project-addpatient-main .addpatient-section .section-full-itm .label{
+    font-size: 16px;
+    font-weight: 600;
+     
+ }
+  .project-addpatient-main .addpatient-section .section-full-itm .item-expanded{
+  width: 100%;
+  height: 100px;
+ }
+  .project-addpatient-main .addpatient-section .section-full-itm .item-expanded textarea{
+    width: 100%;
+    height: inherit;
+    border: 1px solid var(--button-border-color);
+    outline: none;
+    resize: none;
+    font-size: 16px;
+    border-radius: 4px;
+    padding: .5rem;
+ }
+
+.project-addpatient-main .proposal-left-section{
+    align-items: flex-end !important;
+}
+.project-addpatient-main .addpatient-section:last-child{
+    border-bottom:none;
+}
+.project-addpatient-main .addpatient-section .section-title{
+
+    padding: 1rem 0;
+    font-size: 15px;
+    font-size: 500;
+    letter-spacing: .5px;
+    color: var(--gray-font-color);
+    text-transform: uppercase;
+
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+
+.project-addpatient-main .addpatient-section .proposal-summary-title{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.project-addpatient-main .addpatient-section .proposal-summary-totals{
+    width: 500px !important;
+}
+.project-addpatient-main .addpatient-section .proposal-summary-title .title{
+
+    padding: 1rem 0;
+    font-size: 15px;
+    letter-spacing: .5px;
+    color: var(--gray-font-color);
+    text-transform: uppercase;
+
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.project-addpatient-main .addpatient-section .proposal-summary-title .options{
+    display: flex;
+    align-items: center;
+}
+
+.project-addpatient-main .addpatient-section .proposal-summary-title .options .config-input{
+  
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+}
+.project-addpatient-main .addpatient-section .proposal-summary-title .options .config-input .head{
+  
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    user-select: none;
+}
+.project-addpatient-main .addpatient-section .proposal-summary-title .options .config-input .head .label{
+  
+    color: var(--primary-color);
+    border: none;
+    font-size: 14px;
+    outline: none;
+    font-weight: 600;
+}
+
+.project-addpatient-main .addpatient-section .proposal-summary-title .options .config-input .head .icon {
+    margin-top: 5px;
+}
+.project-addpatient-main .addpatient-section .proposal-summary-title .options .config-input .head .icon svg path{
+    fill: var(--primary-color);
+}
+.project-addpatient-main .addpatient-section .proposal-summary-title .options .config-input .config-options{
+    position: absolute;
+    top: 110%;
+    right: 0;
+    z-index: 100;
+    display: none;
+    flex-direction: column;
+    background: var(--bg-light-color);
+    box-shadow: 0px 4px 4px rgba(8, 35, 48, 0.12);
+    border: 1px solid var(--border-light-color);
+    border-radius: 10px;
+    width: max-content;
+    min-width: 150px;
+    max-height: 200px;
+    height: max-content;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.project-addpatient-main .addpatient-section .proposal-summary-title .options .config-input .config-options-active{
+    display: flex !important;
+}
+
+.project-addpatient-main .addpatient-section .proposal-summary-title .options .config-input .config-option{
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.project-addpatient-main .addpatient-section .proposal-summary-title .options .config-input .config-option{
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.project-addpatient-main .addpatient-section .proposal-summary-title .options .config-input .config-option .checkbox input{
+   width: 16px;
+}
+
+.project-addpatient-main .addpatient-section .section-title .section-sub-title{
+    font-size: 14px;
+    font-size: 400;
+    color: var(--primary-color);
+    text-transform:none;
+}
+
+
+
+.project-addpatient-main .addpatient-section .section-items{
+
+    width: 100%;
+    height: max-content;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.project-addpatient-main .addpatient-section .proposal-summary-items{
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    height: max-content;
+}
+.project-addpatient-main .addpatient-section .proposal-summary-item{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    padding: .5rem 0;
+}
+.project-addpatient-main .addpatient-section .proposal-summary-item .proposal-summary-item-head{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: .5rem;  
+    border-bottom: 1px solid var(--border-light-color);
+}
+.project-addpatient-main .addpatient-section .proposal-summary-item .proposal-summary-item-content{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-addpatient-main .addpatient-section .proposal-summary-item .proposal-summary-item-content .item{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 1rem 0.5rem;
+    border-top: 1px solid var(--border-light-color);
+
+    font-size: 15px;
+}
+.project-addpatient-main .addpatient-section .proposal-summary-item .proposal-summary-item-content .summary-final-total{
+    padding: 1.5rem 0.5rem !important;
+}
+.project-addpatient-main .addpatient-section .proposal-summary-item .proposal-summary-item-content .summary-final-total .title{
+    font-weight: 550 !important;
+    font-size: 17px !important;
+}
+.project-addpatient-main .addpatient-section .proposal-summary-item .proposal-summary-item-content .summary-final-total .amount{
+    font-weight: 700 !important;
+    font-size: 20px !important;
+}
+.project-addpatient-main .addpatient-section .proposal-summary-item .proposal-summary-item-content .item .title{
+    width: 65%;
+    font-weight: 400;
+    color: var(--dark-font-color);
+}
+.project-addpatient-main .addpatient-section .proposal-summary-item .proposal-summary-item-content .item .amount{
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    /* gap: 10px; */
+    font-weight: 550;
+}
+
+.project-addpatient-main .addpatient-section .section-items .section-itm{
+    margin-top: 1.5rem;
+    min-width: 250px;
+    width: 24%;
+    height: 45px;
+}
+.project-addpatient-main .addpatient-section .section-items .section-itm-full{
+    margin-top: 1.5rem;
+    min-width: 100%;
+    width: 100%;
+    height: max-content;
+}
+
+.project-addpatient-main .addpatient-section .section-items .section-itm .textinput-main,
+.project-addpatient-main .addpatient-section .section-items .section-itm .costinput-main,
+.project-addpatient-main .addpatient-section .section-items .section-itm .dateinput-main,
+.project-addpatient-main .addpatient-section .section-items .section-itm-full .dateinput-main
+{
+
+    height: inherit !important;
+}
+
+ .section-itm-document{
+
+    width: 150px;
+    height: max-content;
+    position: relative;
+}
+ .section-itm-document .section-itm-document-risk{
+    position: absolute;
+    top: -10px;
+    right: 0px;
+    z-index: 10000;
+    width: max-content;
+    height: 20px;
+    font-size: 16px;
+    padding: 0 .5rem;
+    background: var(--danger-color);
+    color: var(--light-font-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+ .section-itm-document input{
+    display: none;
+}
+ .section-itm-document .document-preview{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    width: 100%;
+    padding: .5rem;
+    border-radius: 10px;
+    border: 1px solid var(--gray-font-color);
+
+}
+ .section-itm-document .document-preview .label{
+    padding: .3rem .5rem;
+    font-size: 13px;
+    color: var(--dark-font-color);
+    background: #eee;
+    border-radius: 1000px;
+    text-align: center;
+}
+ .section-itm-document .document-preview .img{
+    width: 100%;
+    height: 80px;
+}
+ .section-itm-document .document-preview .buttons{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+ .section-itm-document .document-preview .buttons .btn{
+    width: max-content;
+    height: 30px;
+    font-size: 14px;
+    color: var(--primary-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    border-radius: 1000px;
+    padding: 0 .6rem;
+    color: var(--light-font-color);
+}
+.section-itm-document .document-preview .buttons .edit{
+    background: var(--warning-color);
+}
+.section-itm-document .document-preview .buttons .preview{
+    background: var(--primary-color);
+}
+.section-itm-document .document-preview .buttons .download{
+    background: var(--success-color);
+}
+
+ .section-itm-document .document-preview .img img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.project-addpatient-main .addpatient-footer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border-top: 1px solid var(--border-color);
+    padding: 1rem;
+    gap: 10px;
+}
+.project-addpatient-main .addpatient-footer .button-item{
+    padding: 0 12px;
+    width: auto;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    outline: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgb(35, 41, 104);
+    background: var(--hover-color);
+    border: 1px solid var(--border-color);
+}
+.project-addpatient-main .addpatient-footer .button-save {
+    color: var(--light-font-color);
+    background: var(--primary-button-color);
+    border: none;
+}
+.project-addpatient-main .addpatient-footer .button-download {
+    color: var(--primary-color);;
+    background: var(--bg-light-color);
+    border: 1px solid var(--primary-color);;
+}
+.project-addpatient-main .addpatient-footer .footer-itm .icon{
+    margin-top: 2px;
+}
+.project-addpatient-main .addpatient-footer .button-save .icon svg path{
+    fill: var(--light-font-color);
+}
+.project-addpatient-main .addpatient-footer .button-download .icon svg path{
+    fill: var(--primary-color);
+}
+
+@media only screen and (max-width: 1070px) {
+    .project-addpatient-main .addpatient-section .section-items .section-itm{
+        width: 49%;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .project-addpatient-main .addpatient-section .section-items .section-itm{
+        width: 100%;
+    }
+    .project-addpatient-main .addpatient-section .proposal-summary-totals{
+        width: 100% !important;
+    }
+}

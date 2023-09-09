@@ -1,0 +1,274 @@
+:root {
+
+    /* Widths */
+    --sidebar-width: 250px;
+    --header-height: 64px;
+    --max-width: 1290px;
+    /* Colors */
+    --primary-button-color: #000;
+    --primary-color: #2855ff;
+    --primary-dark-color: #2855ff;
+    --primary-trans-color: rgba(40, 85, 255, 0.08);
+    --blocking-color: rgba(6, 4, 4, 0.4);
+    --border-color: rgba(0, 0, 0, 0.1);
+    --border-dark-color: #D6D8E7;
+    --border-warning-color: rgb(229, 76, 64);
+    --border-light-color: #E3E4EE;
+    --button-border-color: #B8BBD4;
+    --background-gray: #D0D3E3;
+    --hover-color: rgba(0, 0, 0, 0.04);
+    --popup-blocking-color: rgba(0, 0, 0, 0.6);
+    --light-font-color: #fff;
+    --dark-font-color: #4C2E0B;
+    --mid-black-font-color: #31284C;
+    --black-font-color: #000;
+    --gray-font-color: #9193a3;
+    --gray2-font-color: rgba(19, 22, 23, .7);
+    --gray-dark-font-color: #2329681a;
+    --bg-color: #F6F6F6;
+    --bg-warning-color: #fcedec;
+    --bg-dark-color: #F4F4F7;
+    --bg-light-color: #fff;
+    --bg-light-gray-color: #ccc;
+
+    --bg-circle-chart: #eee;
+
+    --bg-worksheet-group: #F2F6FE;
+    --bg-worksheet-subitems: #F2F2F6;
+    --bg-worksheet-subtotal: #F8F9FA;
+
+    --active-color: #2855ff;
+    --danger-color: #f44336;
+    --warning-color: #F29D41;
+    --success-color: #07C07E;
+
+}
+
+.project-projectsscheduler-main {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.project-projectsscheduler-main .projectsscheduler-content {
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+}
+
+.project-projectsscheduler-main .projectsscheduler-content .projectsscheduler-header {
+    width: 100%;
+    height: max-content;
+    padding: .5rem 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.project-projectsscheduler-main .projectsscheduler-header .left .title {
+    font-size: 20px;
+    font-weight: 550;
+}
+
+.project-projectsscheduler-main .projectsscheduler-header .right {
+    width: max-content;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.project-projectsscheduler-main .projectsscheduler-header .right-buttons .button {
+    width: max-content;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    background: var(--primary-button-color);
+    color: var(--light-font-color);
+    border-radius: 10px;
+    padding: 0 1rem;
+    font-size: 16px;
+    font-weight: 550;
+}
+
+.project-projectsscheduler-main .projectsscheduler-header .right-buttons .button .icon {
+    margin-top: 5px;
+}
+
+.project-projectsscheduler-main .projectsscheduler-section-header {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+.project-projectsscheduler-main .projectsscheduler-sections-main {
+
+    width: 100%;
+    height: 95%;
+    padding: 1rem;
+    border-radius: 15px;
+    background: var(--bg-light-color);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.project-projectsscheduler-main .projectsscheduler-sections-main .projectsscheduler-sections{
+    width: 100%;
+    height: 80%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+
+
+.project-projectsscheduler-main .projectsscheduler-section-header  .section-header {
+
+    width: 500px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: var(--bg-color);
+    padding: 0 1rem;
+    border-radius: 1000px;
+    border: 1px solid var(--border-light-color);
+    cursor: pointer;
+}
+
+
+.project-projectsscheduler-main .projectsscheduler-section-header  .section-header .count {
+
+    width: 30px;
+    height: 30px;
+    border-radius: 1000px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--light-font-color);
+}
+
+.project-projectsscheduler-main .projectsscheduler-section-header  .section-header .count-today {
+    background: var(--primary-dark-color);
+}
+
+.project-projectsscheduler-main .projectsscheduler-section-header  .section-header .count-pending {
+    background: var(--warning-color);
+}
+
+.project-projectsscheduler-main .projectsscheduler-section-header  .section-header .count-completed {
+    background: var(--success-color);
+}
+
+
+.project-projectsscheduler-main .projectsscheduler-section-header  .section-header .title {
+
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.project-projectsscheduler-main .section-items {
+
+    width: 500px;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.project-projectsscheduler-main .section-items .section-item {
+
+    width: 100%;
+    height: max-content;
+    padding: .5rem;
+    border-radius: 10px;
+    background: var(--bg-color);
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid var(--border-light-color);
+    cursor: pointer;
+    transition: all .2s;
+}
+.project-projectsscheduler-main .section-items .section-item:hover{
+    border: 1px solid var(--primary-color);
+}
+.project-projectsscheduler-main .section-items .section-item .left {
+
+    width: max-content;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.project-projectsscheduler-main .section-items .section-item .left .profile {
+
+    width: 50px;
+    height: 50px;
+    border-radius: 1000px;
+    object-fit: cover;
+}
+
+.project-projectsscheduler-main .section-items .section-item .left .detials {
+
+    display: flex;
+    flex-direction: column;
+}
+
+.project-projectsscheduler-main .section-items .section-item .left .detials .title {
+
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.project-projectsscheduler-main .section-items .section-item .left .detials .desc {
+
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--gray-font-color);
+}
+
+.project-projectsscheduler-main .section-items .section-item .right .time {
+    width: max-content;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+
+}
+
+
+
+@media only screen and (max-width: 850px) {
+
+    .project-projectsscheduler-main .projectsscheduler-section-header {
+        overflow-x: auto;
+    }
+    .project-projectsscheduler-main .projectsscheduler-section-header  .header-today-active {
+        border: 2px solid var(--primary-dark-color);
+    }
+    .project-projectsscheduler-main .projectsscheduler-section-header  .header-upcomming-active {
+        border: 2px solid var(--warning-color);
+    }
+    .project-projectsscheduler-main .projectsscheduler-section-header  .header-completed-active {
+        border: 2px solid  var(--success-color);
+    }
+
+    .project-projectsscheduler-main .section-items{
+        display: none !important;
+    }
+    .project-projectsscheduler-main .section-items-active{
+        display: flex !important;
+        width: 100%;
+    }
+}

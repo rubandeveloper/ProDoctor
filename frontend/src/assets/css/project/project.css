@@ -1,0 +1,16 @@
+.project-projects-main {
+    position: relative;
+
+    width: 100%;
+    height: inherit;
+
+    display: flex;
+    align-items: flex-start;
+
+}
+
+.project-projects-main .projects-content-container {
+    width: calc(100% - var(--sidebar-width));
+    height: 100%;
+    background: var(--bg-color);
+}

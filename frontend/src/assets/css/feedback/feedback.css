@@ -1,0 +1,179 @@
+.project-feedback-main {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.project-feedback-main .feedback-content{
+    width: 100%;
+    max-width: 800px;
+    height: max-content;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--bg-light-color);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid var(--border-light-color);
+    box-shadow: 0px 20px 100px rgba(8, 35, 48, 0.12);
+    
+}
+.project-feedback-main .feedback-content .feedback-header{
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.project-feedback-main .feedback-content .feedback-header .title{
+
+  font-size: 32px;
+  font-weight: 800;
+}
+.project-feedback-main .feedback-content .feedback-header .desc{
+
+  width: 70%;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+}
+.project-feedback-main .feedback-content .feedback-inputs{
+
+    width: 80%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 0;
+    gap: 15px;
+}
+.project-feedback-main .feedback-content .feedback-inputs .feedback-input-item{
+
+    width: 100%;
+    height: max-content;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.project-feedback-main .feedback-content .feedback-inputs .feedback-input-item .label{
+    font-size: 16px;
+    font-weight: 550;
+}
+.project-feedback-main .feedback-content .feedback-inputs .feedback-input-item .feedback-input-rating{
+
+    width: max-content;
+    /* display: flex;
+    justify-content: center; */
+}
+.project-feedback-main .feedback-content .feedback-inputs .feedback-input-item .feedback-input-category:focus{
+
+   border-color:var(--primary-color) ;
+}
+.project-feedback-main .feedback-content .feedback-inputs .feedback-input-item .feedback-input-category{
+
+    width: 100%;
+
+    height: 40px;
+    outline: none;
+    border: 1px solid var(--border-dark-color);
+    border-radius: 8px;
+    font-size: 16px;
+}
+.project-feedback-main .feedback-content .feedback-inputs .feedback-input-item .feedback-input-message{
+
+    width: 100%;
+    height: 200px;
+    resize: none;
+    outline: none;
+    border: 1px solid var(--border-dark-color);
+    border-radius: 8px;
+    font-size: 16px;
+    padding: .5rem;
+}
+
+  
+.project-feedback-main .feedback-content .feedback-buttons{
+
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.project-feedback-main .feedback-content .feedback-buttons .feedback-button-item{
+
+    width: max-content;
+    padding: 0 2rem;
+
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 450;
+    cursor: pointer;
+    border-radius: 5px;
+    background: var(--primary-color);
+    color: var(--light-font-color);
+    outline: none;
+    border: none;
+}
+
+  
+  .feedback-input-rating > label {
+    color: #90A0A3;
+    float: right;
+    transition: all .3s;
+  }
+  
+  .feedback-input-rating > label:before {
+    margin: 1rem;
+    font-size: 3rem;
+    font-family: FontAwesome;
+    content: "\f005";
+    display: inline-block;
+  }
+  
+  .feedback-input-rating > input {
+    display: none;
+  }
+  
+  .feedback-input-rating > input:checked ~ label,
+  .feedback-input-rating:not(:checked) > label:hover,
+  .feedback-input-rating:not(:checked) > label:hover ~ label {
+    color: #F79426;
+  }
+  
+  .feedback-input-rating > input:checked + label:hover,
+  .feedback-input-rating > input:checked ~ label:hover,
+  .feedback-input-rating > label:hover ~ input:checked ~ label,
+  .feedback-input-rating > input:checked ~ label:hover ~ label {
+    color: #FECE31;
+  }
+
+  @media only screen and (max-width: 850px) {
+    .project-feedback-main .feedback-content{
+        width: 100%;
+        height: 100%;
+        box-shadow:none;
+        border: none;
+        justify-content: center;
+    }
+    .project-feedback-main .feedback-content .feedback-header .desc{
+        width: 90%;
+    }
+    .project-feedback-main .feedback-content .feedback-inputs{
+        width: 100%;
+    }
+  } 
+  @media only screen and (max-width: 550px) {
+    .feedback-input-rating > label:before{
+        margin: .5rem;
+    }
+  }
