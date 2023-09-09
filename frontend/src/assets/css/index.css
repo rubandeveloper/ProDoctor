@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+@import url(./header/header.css);
+@import url(./sidebar/sidebar.css);
+@import url(./login/login.css);
+@import url(./toastMsg.css);
+@import url(./project/patientView.css);
+@import url(./settings/settings.css);
+@import url(./settings/profile.css);
+@import url(./project/projectsLists.css);
+@import url(./Inputs/inputs.css);
+@import url(./worksheet/worksheet.css);
+@import url(./popups/popup.css);
+@import url(./loading.css);
+@import url(./project/proposal.css);
+@import url(./project/proposalPreview.css);
+@import url(./project/overview.css);
+@import url(./onboarding/onboarding.css);
+@import url(./feedback/feedback.css);
+@import url(./project/whiteboard.css);
+@import url(./project/scheduler.css);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Encode Sans', sans-serif;
+}
+
+:root {
+
+    /* Widths */
+    --sidebar-width: 250px;
+    --header-height: 64px;
+    --max-width: 1290px;
+    /* Colors */
+    --primary-button-color: #000;
+    --primary-color: #2855ff;
+    --primary-dark-color: #2855ff;
+    --primary-trans-color: rgba(40, 85, 255, 0.08);
+    --blocking-color: rgba(6, 4, 4, 0.4);
+    --border-color: rgba(0, 0, 0, 0.1);
+    --border-dark-color: #D6D8E7;
+    --border-warning-color: rgb(229, 76, 64);
+    --border-light-color: #E3E4EE;
+    --button-border-color: #B8BBD4;
+    --background-gray: #D0D3E3;
+    --hover-color: rgba(0, 0, 0, 0.04);
+    --popup-blocking-color: rgba(0, 0, 0, 0.6);
+    --light-font-color: #fff;
+    --dark-font-color: #4C2E0B;
+    --mid-black-font-color: #31284C;
+    --black-font-color: #000;
+    --gray-font-color: #9193a3;
+    --gray2-font-color: rgba(19, 22, 23, .7);
+    --gray-dark-font-color: #2329681a;
+    --bg-color: #F6F6F6;
+    --bg-warning-color: #fcedec;
+    --bg-dark-color: #F4F4F7;
+    --bg-light-color: #fff;
+    --bg-light-gray-color: #ccc;
+
+    --bg-circle-chart: #eee;
+
+    --bg-worksheet-group: #F2F6FE;
+    --bg-worksheet-subitems: #F2F2F6;
+    --bg-worksheet-subtotal: #F8F9FA;
+
+    --active-color: #2855ff;
+    --danger-color: #f44336;
+    --warning-color: #F29D41;
+    --success-color: #07C07E;
+
+}
+
+#file-viewer-root {
+    height: 100%;
+}
+
+#file-viewer-root .ot-iv-Toolbar-title {
+    display: none !important;
+}
+
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+.project-main-container {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.project-section-container {
+    width: 100%;
+    height: calc(100% - var(--header-height));
+    display: flex;
+}
+
+.project-content-main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    background: var(--bg-light-color);
+}
+
+*::-webkit-scrollbar-track {
+    background-color: #F5F5F5;
+    border: 1px solid #b8bbd4;
+
+}
+
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #b8bbd4;
+}

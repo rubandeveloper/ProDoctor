@@ -1,0 +1,52 @@
+
+
+
+.project-addpatient-main .addpatient-section .section-itm-full .additional-item {
+
+    width: 100%;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.project-addpatient-main .addpatient-section .section-itm-full .additional-item .head {
+
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+
+    color: var(--gray-font-color);
+}
+
+.project-addpatient-main .addpatient-section .section-itm-full .additional-item .head .icon {
+
+    margin-top: 5px;
+    opacity: .5;
+}
+
+.project-addpatient-main .addpatient-section .section-itm-full .additional-item-active .head {
+
+    color: var(--dark-font-color) !important;
+}
+
+.project-addpatient-main .addpatient-section .section-itm-full .additional-item-active .head .icon {
+
+    opacity: 1 !important;
+}
+
+.project-addpatient-main .addpatient-section .section-itm-full .additional-item-active .item-expanded {
+
+    display: block !important;
+}
+
+.project-addpatient-main .addpatient-section .section-itm-full .additional-item .item-expanded {
+
+    width: 100%;
+    height: max-content;
+
+    display: none;
+}

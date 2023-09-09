@@ -1,0 +1,575 @@
+
+:root{
+    --estimation-summary-height: 80px;
+    --estimation-worksheet-height: calc(91% - var(--estimation-summary-height));
+
+}
+.project-pd_estimate-main {
+    width: 100%;
+    height: 100%;
+background: var(--bg-light-color);
+    overflow: hidden;
+}
+
+.project-pd_estimate-main .pd_estimate-content {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.project-pd_estimate-main .pd_estimate-content-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-light-color);
+    padding:1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.project-pd_estimate-main .pd_estimate-content-section {
+    display: flex;
+    align-items: center;
+}
+
+.project-pd_estimate-main .pd_estimate-content-title {
+
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.project-pd_estimate-main .pd_estimate-content-btn-options-active {
+    display: flex !important;
+}
+
+.project-pd_estimate-main .pd_estimate-content-btn-options {
+    position: absolute;
+    top: 110%;
+    right: 0;
+    z-index: 100;
+    display: none;
+    flex-direction: column;
+    background: var(--bg-light-color);
+    box-shadow: 0px 4px 4px rgba(8, 35, 48, 0.12);
+    border: 1px solid var(--border-light-color);
+    border-radius: 10px;
+    color: var(--dark-font-color);
+    width: 200px;
+    min-width: 150px;
+    max-height: 500px;
+    height: max-content;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.project-pd_estimate-main .pd_estimate-content-btn-options .btn-option-item {
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.project-pd_estimate-main .pd_estimate-content-btn {
+    position: relative;
+    width: max-content;
+    height: 42px;
+    padding: 6px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    background: var(--primary-button-color);
+    user-select: none;
+    font-size: 15px;
+    font-weight: 550;
+    color: var(--light-font-color);
+}
+
+.project-pd_estimate-main .pd_estimate-content-btn .icon svg {
+
+    width: 24px;
+    height: 24px;
+
+}
+
+.project-pd_estimate-main .pd_estimate-content-btn .icon svg {
+
+    width: 20px;
+    height: 20px;
+    margin-top: 5px;
+}
+
+.project-pd_estimate-main .pd_estimate-editview-content {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+
+.project-pd_estimate-main .pd_table-cards {
+    width: 100%;
+    height: 100%;   
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.project-pd_estimate-main .pd_table-cards .pd_table-cards-items{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;    
+    padding: 1rem;
+}
+
+.project-pd_estimate-main .pd_table-cards-item {
+    width: 400px;
+    min-height: 100px;
+    max-height: 150px;
+    border-radius: 10px;
+    display: flex;
+    border: 2px solid var(--border-color);
+    box-shadow: 0px 2px 6px 1px rgba(8, 3, 3, 0.226);
+    cursor: pointer;
+    transition: all .25s;
+}
+.project-pd_estimate-main .pd_table-cards-item:hover{
+    border: 2px solid var(--primary-color);
+}
+.project-pd_estimate-main .pd_table-cards-item .card-left{
+    width: 100px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.project-pd_estimate-main .pd_table-cards-item .card-left .profile-img{
+    width: 90%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+.project-pd_estimate-main .pd_table-cards-item .card-left .profile-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+}
+.project-pd_estimate-main .pd_table-cards-item .card-right{
+    width: calc(100% - 120px);
+    height: 100%;
+    display: flex;
+    
+}
+.project-pd_estimate-main .pd_table-cards-item .card-right .card-detials{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: .5rem;
+
+    border-right: 1px solid var(--border-color);
+}
+
+.project-pd_estimate-main .pd_table-cards-item .card-right .card-detials .card-detials-title{
+    font-weight: 540;
+    font-size: 18px;
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+.project-pd_estimate-main .pd_table-cards-item .card-right .card-detials .card-detials-item{
+    font-size: 15px;
+    color: var(--gray-font-color);
+    text-transform: uppercase;
+}
+.project-pd_estimate-main .pd_table-cards-item .card-right .card-detials .card-detials-item::before{
+    content: attr(data-label);
+    font-weight: 12;
+    text-transform: capitalize;
+}
+
+.project-pd_estimate-main .pd_table-cards-item .card-right .card-actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+    padding: .5rem;
+}
+.project-pd_estimate-main .pd_table-cards-item .card-right .card-actions .card-actions-status{
+    font-size: 12px;
+    text-transform: uppercase;
+}
+.project-pd_estimate-main .pd_table-cards-item .card-right .card-actions .status-general{
+    
+    background: var(--warning-color);
+    color: var(--light-font-color);
+    padding: .2rem .5rem;
+    border-radius: 1000px;
+}
+.project-pd_estimate-main .pd_table-cards-item .card-right .card-actions .status-emergency{
+    
+    background: var(--danger-color);
+    color: var(--light-font-color);
+    padding: .2rem .5rem;
+    border-radius: 1000px;
+}
+.project-pd_estimate-main .pd_table-cards-item .card-right .card-actions .card-actions-btns{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.project-pd_estimate-main .pd_table-cards-item .card-right .card-actions .card-actions-btns .btn{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}   
+.project-pd_estimate-main .pd_table-cards-item .card-right .card-actions .card-actions-btns .btn svg{
+    width: 100%;
+    height: 100%;
+}  
+.project-pd_estimate-main .pd_table-cards-item .card-right .card-actions .card-actions-btns .edit svg path{
+    fill: var(--warning-color);
+} 
+.project-pd_estimate-main .pd_table-cards-item .card-right .card-actions .card-actions-btns .delete svg path{
+    fill: var(--danger-color);
+} 
+
+.project-pd_estimate-main .pd_estimate-editview-summary{
+    width: 100%;
+    
+    height: var(--estimation-summary-height);
+    display: flex;
+    border-top: 1px solid var(--border-light-color);
+    box-shadow: 15px 0px 15px rgba(8, 35, 48, 0.12);
+
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.project-pd_estimate-main .pd_estimate-editview-summary .summary-left{
+    width: 100%;
+        height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.project-pd_estimate-main .pd_estimate-editview-summary-active .summary-left{
+    width: 50%;
+    border-right: 1px solid  var(--border-color);
+}
+
+.project-pd_estimate-main .pd_estimate-editview-summary .summary-header{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
+
+.project-pd_estimate-main .pd_estimate-editview-summary .summary-header .left
+{
+   width: max-content;
+   height: 100%;
+   display: flex;
+   align-items: center;
+   gap: 15px;
+   user-select: none;
+}
+.project-pd_estimate-main .pd_estimate-editview-summary .summary-header .left-item{
+   width: max-content;
+   display: flex;
+   align-items: center;
+   gap: 15px;
+   font-weight: 600;
+   cursor: pointer;
+}
+.project-pd_estimate-main .pd_estimate-editview-summary .summary-header .left-item .icon{
+   transform: rotate(180deg);
+   transition: all .25s;
+}
+.project-pd_estimate-main .pd_estimate-editview-summary-active .summary-header .left-item .icon{
+   transform: rotate(0deg) !important;
+}
+
+.project-pd_estimate-main .pd_estimate-editview-summary .summary-header .right{
+    width: max-content;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+ }
+.project-pd_estimate-main .pd_estimate-editview-summary .summary-header .right .right-item{
+    width: max-content;
+    height: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-end;
+   justify-content: center;
+}
+.project-pd_estimate-main .pd_estimate-editview-summary .summary-header .right .right-item .label{
+    color: var(--dark-font-color);
+    font-size: 12px;
+    text-align: right;
+    font-weight: 500;
+    line-height: 14px;
+    margin-right: 10px;
+}
+.project-pd_estimate-main .pd_estimate-editview-summary .summary-header .right .right-item .value{
+    padding: 5px 12px;
+    background: var(--gray-dark-font-color);
+    color: var(--dark-font-color);
+    border-radius: 1000px;
+    font-size: 14px;
+    font-weight: 600;
+}
+.project-pd_estimate-main .pd_estimate-editview-summary .summary-header .right .right-item .value-markups{
+    background: var(--success-color);
+    color: var(--light-font-color);
+}
+.project-pd_estimate-main .pd_estimate-editview-summary .summary-header .right .right-item .value-price{
+    background: var(--dark-font-color);
+    color: var(--light-font-color);
+}
+
+.project-pd_estimate-main .pd_estimate-editview-summary-active .summary-header .right{
+    display: none;
+ }
+
+ .project-pd_estimate-main .pd_estimate-editview-summary .summary-content{
+    width: 100%;
+   
+    height: calc(100% - 60px);
+    
+    display: flex;
+    flex-direction: column;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+    
+}
+ .project-pd_estimate-main .pd_estimate-editview-summary .summary-content .content-item{
+   width: 100%;
+   height: max-content;
+
+   display: flex;
+   flex-direction: column;
+   padding: .5rem;
+    
+}
+ .project-pd_estimate-main .pd_estimate-editview-summary .summary-content .content-item .head{
+   width: 100%;
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   padding: .5rem;  
+   border-bottom: 1px solid var(--border-light-color);  
+}
+ .project-pd_estimate-main .pd_estimate-editview-summary .summary-content .content-item .label{
+   font-size: 16px;
+   font-weight: 600;
+    
+}
+ .project-pd_estimate-main .pd_estimate-editview-summary .summary-content .content-item .select-input select{
+   
+    color: var(--primary-color);
+    border: none;
+    height: 30px;
+    font-size: 14px;
+    outline: none;
+    font-weight: 600;
+}
+ .project-pd_estimate-main .pd_estimate-editview-summary .summary-content .content-item .head-items{
+   
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+}
+ .project-pd_estimate-main .pd_estimate-editview-summary .summary-content .content-item .head-items .item{
+    width: 100%;
+    display: flex;
+
+    align-items: center;
+    gap: 10px;
+    padding: .5rem;  
+    border-bottom: 1px solid var(--border-light-color);  
+}
+ .project-pd_estimate-main .pd_estimate-editview-summary .summary-content .content-item .head-items .item .title{
+    width: 50%;
+    font-weight: 400;
+    color: var(--dark-font-color);
+}
+ .project-pd_estimate-main .pd_estimate-editview-summary .summary-content .content-item .head-items .item .value{
+    width: 40%;
+   
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+}
+ .project-pd_estimate-main .pd_estimate-editview-summary .summary-content .content-item .head-items .item .value .close{
+   margin-top: 5px;
+   cursor: pointer;
+}
+
+/* .project-pd_estimate-main .pd_estimate-editview-summary-active .summary-content{
+    display: flex;
+ } */
+
+ .project-pd_estimate-main .pd_estimate-editview-summary-active .summary-left{
+    width: 50%;
+    border-right: 1px solid  var(--border-color);
+}
+
+.project-pd_estimate-main .pd_estimate-editview-summary .summary-right{
+    
+    width: 50%;
+    height: 100%;
+
+    display: none;
+    flex-direction: column;
+
+    padding: 1rem;
+}
+.project-pd_estimate-main .pd_estimate-editview-summary-active .summary-right{
+    
+  display: flex !important;
+}
+.project-pd_estimate-main .pd_estimate-editview-summary .summary-right .title{
+    
+  font-size: 14px;
+  color: var(--dark-font-color);
+  font-weight: 400;
+}
+.project-pd_estimate-main .pd_estimate-editview-summary .summary-right .total-items{
+
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    color: var( --dark-font-color);
+}
+.project-pd_estimate-main .pd_estimate-editview-summary .summary-right .total-item{
+
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: space-between;
+    padding: .4rem .5rem;
+}
+.project-pd_estimate-main .pd_estimate-editview-summary .summary-right .value-markups{
+
+    padding: 5px 12px;
+    background: var(--success-color);
+    color: var(--light-font-color);
+    border-radius: 1000px;
+    font-size: 14px;
+    font-weight: 600;
+}
+.project-pd_estimate-main .pd_estimate-editview-summary .summary-right .total-item .label{
+
+    font-size: 15px;
+    font-weight: 400;
+}
+.project-pd_estimate-main .pd_estimate-editview-summary .summary-right .total-item .value{
+
+    font-size: 15px;
+    font-weight: 500;
+}
+.project-pd_estimate-main .pd_estimate-editview-summary .summary-right .final-total{
+
+   width: 100%;
+   height: max-content;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   border-top: 1px solid var(--border-light-color);
+   padding: .5rem;
+}
+.project-pd_estimate-main .pd_estimate-editview-summary .summary-right .final-total .label{
+
+  font-size: 16px;
+  font-weight: 600;
+}
+.project-pd_estimate-main .pd_estimate-editview-summary .summary-right .final-total .value{
+
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28.13px;
+}
+
+
+.project-pd_estimate-main  .analyzer-tools-main{
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    padding: 2rem;
+}
+.project-pd_estimate-main  .analyzer-tools-main .tools-item{
+    width: 300px;
+    min-height: 100px;
+    max-height: 50px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: .5rem;
+    border: 2px solid var(--border-color);
+    box-shadow: 0px 2px 6px 1px rgba(8, 3, 3, 0.226);
+    cursor: pointer;
+    transition: all .25s;
+    font-size: 24px;
+    
+}
+.project-pd_estimate-main  .analyzer-tools-main .tools-item:hover{
+    border: 2px solid var(--primary-color);
+}
+.project-pd_estimate-main  .analyzer-tools-main .tools-item .img{
+
+ width: auto;
+ height: 90%;
+}
+.project-pd_estimate-main  .analyzer-tools-main .tools-item .img img{
+
+ width: 100%;
+ height: 100%;
+ object-fit: contain;
+}
+
+
+@media only screen and (max-width: 800px) {
+    .project-pd_estimate-main .pd_estimate-editview-summary-active .summary-left,
+    .project-pd_estimate-main .pd_estimate-editview-summary-active .summary-right
+    {
+        width: 100% !important;
+        min-width: 100% !important;
+    }
+}
+
+

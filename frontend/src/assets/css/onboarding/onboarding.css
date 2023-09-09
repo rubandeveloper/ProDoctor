@@ -1,0 +1,196 @@
+
+
+.project-onboarding-main {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    background: url(../../images/background_1.svg) transparent;
+    background-size: auto 100%;
+    background-position: right;
+    /* z-index: -1; */
+}
+
+.project-onboarding-main .onboarding-content{
+    width: 100%;
+    max-width: 1000px;
+    height: max-content;
+
+    display: flex;
+    flex-direction: column;
+
+    background: var(--bg-light-color);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid var(--border-light-color);
+    box-shadow: 0px 20px 100px rgba(8, 35, 48, 0.12);
+    
+}
+.project-onboarding-main .onboarding-content{
+    width: 100%;
+    max-width: 1000px;
+    height: max-content;
+
+    display: flex;
+    flex-direction: column;
+}
+.project-onboarding-main .onboarding-content .onboarding-content-logo{
+   width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.project-onboarding-main .onboarding-content .onboarding-content-logo img{
+   width: auto;
+    height: inherit;
+}
+.project-onboarding-main .onboarding-content-main{
+    margin-top: 2rem;
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+}
+.project-onboarding-main .onboarding-content-main .content-main-question{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+.project-onboarding-main .onboarding-content-main .content-main-question .title{
+    font-size: 24px;
+    font-weight: 600;
+}
+.project-onboarding-main .onboarding-content-main .content-main-question .desc{
+    font-size: 17px;
+    font-weight: 400;
+}
+.project-onboarding-main .onboarding-content-main .content-main-options{
+   
+    width: 100%;
+    height: max-content;
+    margin: 3rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.project-onboarding-main .onboarding-content-main .content-main-options .content-main-option{
+   
+    width: 48%;
+    height: 130px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 2px  solid var(--border-light-color);
+    position: relative;
+}
+.project-onboarding-main .onboarding-content-main .content-main-options .content-main-option-active{
+    border-color: var(--primary-color);
+}
+.project-onboarding-main .onboarding-content-main .content-main-options .content-main-option .selected-checkbox{
+   
+   position: absolute;
+   top: 20px;
+   right: 20px;
+   z-index: 1000;
+   width: 22px;
+   height: 22px;
+
+   border-radius: 1000px;
+   display: none;
+   align-items: center;
+   justify-content: center;
+
+   background: var(--primary-color);
+}
+.project-onboarding-main .onboarding-content-main .content-main-options .content-main-option-active .selected-checkbox{
+    display: flex !important;
+}
+.project-onboarding-main .onboarding-content-main .content-main-options .content-main-option .selected-checkbox svg{
+    width: 13px;
+    height: 13px;
+}
+.project-onboarding-main .onboarding-content-main .content-main-options .content-main-option .selected-checkbox svg path{
+    stroke-width: 3px;
+}
+.project-onboarding-main .onboarding-content-main .content-main-options .content-main-option .title{
+    font-size: 20px;
+    font-weight: 500;
+}
+.project-onboarding-main .onboarding-content-main .content-main-options .content-main-option .desc{
+    font-size: 17px;
+    font-weight: 400;
+}
+
+
+.project-onboarding-main .content-main-footer{
+   
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.project-onboarding-main .content-main-footer .footer-item{
+   
+    width: max-content;
+    height: 40px;
+    color: var(--gray-font-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1.5rem;
+    border-radius: 4px;
+    font-size: 17px;
+    font-weight: 450;
+    cursor: pointer;
+    transition: all .25s;
+}
+.project-onboarding-main .content-main-footer .footer-item-skip:hover{
+    background: var(--hover-color);
+}
+.project-onboarding-main .content-main-footer .footer-item-continue{
+   background: var(--primary-button-color);
+   color: var(--light-font-color);
+}
+
+@media only screen and (max-width: 1020px) {
+    .project-onboarding-main .onboarding-content{
+        width: 90%;
+    }
+}
+@media only screen and (max-width: 730px) {
+    .project-onboarding-main .onboarding-content{
+        width: 100%;
+        height: 100%;
+        padding: 1.5rem;
+    }
+    .project-onboarding-main .onboarding-content-main .content-main-options{
+        margin:1.5rem 0;
+    }
+    .project-onboarding-main .onboarding-content-main .content-main-question{
+        text-align: center;
+    }
+    .project-onboarding-main .onboarding-content-main .content-main-options .content-main-option{
+        width: 100%;
+        min-height: 100px;
+        height: max-content;
+        padding: 1rem;
+    }
+    .project-onboarding-main .onboarding-content{
+        height: 100%;
+        justify-content: center;
+    }
+    
+}

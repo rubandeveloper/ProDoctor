@@ -1,0 +1,397 @@
+/* Date Input */
+.dateinput-main {
+    width: 100%;
+    height: 35px;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    border-radius: 4px;
+    border: 1px solid var(--button-border-color);
+    outline: none;
+    font-size: 16px;
+}
+
+.dateinput-main .textinput-label {
+
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 5px;
+    background: var(--bg-light-color);
+    padding: 0 .2rem;
+    transition: all .2s;
+    font-size: 14px;
+    color: var(--gray-font-color);
+}
+
+.dateinput-main .textinput-label::after {
+
+    content: attr(data-required);
+    color: var(--danger-color);
+    font-size: 12px;
+
+}
+
+.dateinput-main .textinput-label-active {
+    top: -10px;
+    transform: translateY(0);
+    font-size: 14px;
+}
+
+.dateinput-main .dateinput-icon {
+    width: 60px;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.dateinput-main .input {
+    width:100%;
+    height: inherit;
+    background: transparent;
+    outline: none;
+    border: none;
+    font-size: 16px;
+    padding: 0 .5rem;
+}
+
+.dateinput-main .input[type="date"]::-webkit-inner-spin-button,
+.dateinput-main .input[type="date"]::-webkit-calendar-picker-indicator {
+    /* display: none;
+    -webkit-appearance: none; */
+}
+
+
+/* Cost Input */
+.costinput-main {
+    width: 100%;
+    height: 35px;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    border-radius: 4px;
+    border: 1px solid var(--button-border-color);
+    outline: none;
+    font-size: 16px;
+}
+
+.costinput-main .textinput-label {
+
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 5px;
+    background: var(--bg-light-color);
+    padding: 0 .2rem;
+    transition: all .2s;
+    font-size: 14px;
+    color: rgba(35, 41, 104, 0.4);
+}
+
+.costinput-main .textinput-label::after {
+
+    content: attr(data-required);
+    color: var(--danger-color);
+    font-size: 12px;
+
+}
+
+.costinput-main .textinput-label-active {
+    top: -10px;
+    transform: translateY(0);
+    font-size: 14px;
+}
+
+.costinput-main .input {
+    width: calc(100% - 60px);
+    height: inherit;
+    background: transparent;
+    outline: none;
+    border: none;
+    font-size: 16px;
+    padding-left: .5rem;
+
+    border-right: 1px solid var(--button-border-color);
+}
+
+.costinput-main .costtype-icon {
+    width: 60px;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.costinput-main .costmethod-select {
+    width: 60px;
+    height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    outline: none;
+    border: none;
+
+}
+
+/* Text Input */
+.textinput-main {
+    width: 100%;
+    height: 35px;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    border-radius: 4px;
+    border: 1px solid var(--button-border-color);
+    outline: none;
+    font-size: 16px;
+}
+
+.textinput-main .textinput-dropdown-main {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    z-index: 100;
+
+    width: 100%;
+    height: max-content;
+
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 4px;
+    background: var(--bg-light-color);
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    border: 1px solid var(--border-light-color);
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.textinput-main .textinput-dropdown-actions {
+    width: 100%;
+    height: max-content;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.textinput-main .textinput-dropdown-actions .dropdown-additem {
+    width: max-content;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    color: var(--primary-color);
+}
+
+.textinput-main .textinput-dropdown-results {
+
+
+    width: 100%;
+    min-height: max-content;
+    max-height: 30vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+}
+
+.textinput-main .textinput-dropdown-noresult {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 10px;
+    color: var(--gray-font-color);
+}
+
+.textinput-main .textinput-dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: .3rem;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    gap: 10px;
+}
+.textinput-main .input-status {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    border: 1px solid var( --border-light-color);
+}
+.textinput-main .input-status-incomplete {
+    border: none;
+    background: var( --border-light-color);
+}
+.textinput-main .input-status-completed {
+    border: none;
+    background: var(--success-color);
+}
+.textinput-main .input-status-hold {
+    border: none;
+    background: var(--warning-color);
+}
+.textinput-main .input-status-stopped {
+    border: none;
+    background: var(--danger-color);
+}
+
+.textinput-main .input-parent-value{
+    width: max-content;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-left: .5rem;
+}
+.textinput-main .input-value-result{
+    width: max-content;
+    display: flex;
+    align-items: center;
+    padding: 0 .5rem;
+    
+    border-left: 1px solid var(--button-border-color);
+}
+
+.textinput-main .input {
+    width: calc(100% - 60px);
+    height: inherit;
+    background: transparent;
+    outline: none;
+    border: none;
+    font-size: 16px;
+    padding-left: .5rem;
+
+    border-left: 1px solid var(--button-border-color);
+}
+
+.textinput-main .input-full {
+    width: 100% !important;
+    border: none !important;
+}
+
+.textinput-main .textinput-icon {
+    width: 60px;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.textinput-main .textinput-label {
+    font-size: 14px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 5px;
+    background: var(--bg-light-color);
+    padding: 0 .2rem;
+    transition: all .1s;
+    color: rgba(35, 41, 104, 0.8);
+}
+
+.textinput-main .textinput-label::after {
+
+    content: attr(data-required);
+    color: var(--danger-color);
+    font-size: 12px;
+
+}
+
+.textinput-main .textinput-label-active {
+    top: -10px;
+    transform: translateY(0);
+    font-size: 14px;
+}
+
+/* Radio Input */
+.checkboxinput-main {
+
+    width: 100%;
+    height: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.checkboxinput-main .input{
+    width: max-content;
+    height: inherit;
+    background: transparent;
+    outline: none;
+    font-size: 16px;
+    padding-left: .5rem;
+}
+.checkboxinput-main svg
+{
+    width: 100%;
+    outline: none;
+    font-size: 16px;
+}
+
+.checkboxinput-main .checkboxinput-switch
+{
+    position: relative;
+    display: inline-block;
+    width: 45px;
+    height: 20px;
+    margin-right: 15px;
+    transition: all .4s;
+}
+
+.checkboxinput-main .checkboxinput-switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+    transition: all .4s;
+  }
+  
+  .checkboxinput-main .checkboxinput-slider{
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--bg-light-gray-color);
+    transition: all .4s;
+    border-radius: 34px;
+  }
+
+  .checkboxinput-main .checkboxinput-slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 3px;
+    top: 2px;
+    background: var(--bg-light-color);
+    transition: all .4s;
+    border-radius: 50%;
+  }
+
+ .checkboxinput-switch input:checked + .checkboxinput-slider {
+    background-color: var(--primary-color);
+  }
+  
+ .checkboxinput-switch input:focus + .checkboxinput-slider {
+    box-shadow: 0 0 1px var(--primary-color);
+  }
+  
+ .checkboxinput-switch input:checked + .checkboxinput-slider:before {
+    -webkit-transform: translateX(23px);
+    -ms-transform: translateX(23px);
+    transform: translateX(23px);
+  }

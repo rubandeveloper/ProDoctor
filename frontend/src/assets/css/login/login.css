@@ -1,0 +1,314 @@
+.project-login-main {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+}
+
+.project-login-main .project-login-bg {
+
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+
+    background: url(../../images/background_1.svg) transparent;
+    background-size: auto 100%;
+    background-position: right;
+    z-index: -1;
+}
+
+.project-login-main .project-login-content {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+}
+
+/* Login detials */
+.project-login-main .project-login-content .login-left-section {
+    width: calc(100% - 700px);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.project-login-main .project-login-content .login-left-header {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.project-login-main .project-login-content .login-left-header .login-header-logo {
+    height: 40px;
+}
+
+.project-login-main .project-login-content .login-left-content {
+    margin-top: 2rem;
+
+    width: 400px;
+    height: calc(100% - 50px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.project-login-main .project-login-content .login-left-content .login-content-title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    text-align: center;
+}
+
+.project-login-main .project-login-content .login-left-content .login-content-desc {
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 400;
+    color: var(--dark-font-color);
+    opacity: .4;
+    text-align: center;
+}
+
+.project-login-main .project-login-content .login-left-content .login-content-inputs {
+
+    margin: 1rem 0;
+    width: 100%;
+    height: max-content;
+}
+
+.project-login-main .project-login-content .login-left-content .content-input-item {
+
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    margin: 1.5rem 0;
+    position: relative;
+}
+
+.project-login-main .project-login-content .login-left-content .content-input-item .project-login-email-error-msgs {
+
+    position: absolute;
+    left: 0;
+    top: 100%;
+    z-index: 1;
+
+    width: max-content;
+    height: max-content;
+
+    color: var(--danger-color);
+    font-size: 0.75rem;
+    text-align: left;
+    font-weight: 400;
+    line-height: 1.66;
+    letter-spacing: 0.03333em;
+}
+
+.project-login-main .project-login-content .login-left-content .content-input-item .input-password-eye {
+
+    position: absolute;
+    right: 10px;
+    top: 35px;
+    z-index: 1;
+
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.project-login-main .project-login-content .login-left-content .content-input-item .input-password-eye svg path {
+    stroke: var(--gray-font-color);
+}
+
+.project-login-main .project-login-content .login-left-content .content-input-item .input-password-eye-active svg path {
+
+    stroke: var(--primary-color) !important;
+}
+
+.project-login-main .project-login-content .login-left-content .content-input-item label {
+
+    color: rgb(35, 41, 104);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.project-login-main .project-login-content .login-left-content .content-input-item label::after {
+    content: '*';
+    color: var(--danger-color);
+}
+
+.project-login-main .project-login-content .login-left-content .content-submit-btn-disable {
+
+    opacity: .5;
+    cursor: not-allowed !important;
+}
+
+.project-login-main .project-login-content .login-left-content .content-input-item .input-error-active {
+
+    border-color: var(--danger-color);
+}
+
+.project-login-main .project-login-content .login-left-content .content-input-item input {
+
+    width: 100%;
+    border-radius: 5px;
+
+    color: var(--dark-font-color);
+    padding: 18.5px 14px;
+    font-size: 16px !important;
+    line-height: 24px !important;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border: 1px solid var(--button-border-color);
+    outline: none;
+}
+
+.project-login-main .project-login-content .login-left-content .content-input-item input:focus {
+    border-color: var(--primary-color);
+}
+
+.project-login-main .project-login-content .login-left-content .login-content-forgetpass {
+
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    user-select: none;
+}
+
+.project-login-main .project-login-content .login-left-content .login-content-forgetpass .login-navigate-span {
+
+    display: flex;
+    justify-content: flex-end;
+    color: var( --dark-font-color) !important;
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+.project-login-main .project-login-content .login-left-content .login-content-button {
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.project-login-main .project-login-content .login-left-content .login-content-button .login-button {
+
+    width: 100%;
+    height: 45px;
+    box-shadow: none;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    cursor: pointer;
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--light-font-color);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.project-login-main .project-login-content .login-left-content .login-content-signup {
+
+    width: 100%;
+    margin-top: 1rem;
+
+    display: flex;
+    justify-content: center;
+    font-weight: 400;
+}
+
+.project-login-main .project-login-content .login-left-content .login-content-signup .login-navigate-span {
+
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-left: .3rem;
+}
+
+
+
+
+
+/* Login banner */
+.project-login-main .project-login-content .login-right-section {
+    width: 700px;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.project-login-main .project-login-content .login-right-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+}
+
+@media only screen and (max-width: 1200px) {
+    .project-login-main .project-login-content .login-right-section {
+        width: 500px;
+    }
+
+    .project-login-main .project-login-content .login-left-section {
+        width: calc(100% - 500px);
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+
+    .project-login-main .project-login-content .login-left-content .login-content-title{
+        font-size: 20px;
+    }
+
+    .project-login-main .project-login-content{
+        height: max-content;
+        padding: 2rem 1.5rem;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    .project-login-main .project-login-content .login-left-content .content-input-item{
+        margin: 1rem 0;
+    }
+    .project-login-main .project-login-content .login-left-content .login-content-inputs{
+        margin: 0;
+    }
+    .project-login-main .project-login-content .login-left-header {
+
+        justify-content: center;
+    }
+
+    .project-login-main .project-login-content .login-right-section {
+        display: none;
+    }
+
+    .project-login-main .project-login-content .login-left-section {
+        width: 100%;
+        height: max-content;
+    }
+
+    .project-login-main .project-login-content .login-left-content {
+        margin-top: 0px !important;
+        width: 100%;
+        max-width: 500px;
+        height: max-content;
+    }
+}
