@@ -23,7 +23,7 @@ from DownloadModelFiles import downloadModelFiles
 
 load_dotenv()
 
-# downloadModelFiles()
+downloadModelFiles()
 
 """ DB and bottle server Initializing"""
 app = Bottle()
