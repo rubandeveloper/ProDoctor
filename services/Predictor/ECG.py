@@ -21,8 +21,11 @@ from sklearn.linear_model import LogisticRegression
 class ECG:
 	def __init__(self) -> None:
 
-		self.DM_model = joblib.load('D:/Personals/Projects/ProDoctor/services/Models/PCA_ECG.pkl')
-		self.predict_model = joblib.load('D:/Personals/Projects/ProDoctor/services/Models/Heart_Disease_Prediction_using_ECG.pkl')
+		model_PCA_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../Models/PCA_ECG.pkl"))
+		model_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../Models/Heart_Disease_Prediction_using_ECG.pkl"))
+	
+		self.DM_model = joblib.load(model_PCA_path)
+		self.predict_model = joblib.load(model_path)
 
 	def  getImage(self,image):
 		"""
@@ -82,14 +85,16 @@ class ECG:
 				ax[x_counter][y_counter].set_title("Leads {}".format(x+1))
 				y_counter+=1
 	    
+		Leads_1_12_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../Leads_1-12_figure.png"))
+		Leads_13_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../Long_Lead_13_figure.png"))
 		#save the image
-		fig.savefig('Leads_1-12_figure.png')
+		fig.savefig(Leads_1_12_path)
 		fig1 , ax1 = plt.subplots()
 		fig1.set_size_inches(10, 10)
 		ax1.imshow(Lead_13)
 		ax1.set_title("Leads 13")
 		ax1.axis('off')
-		fig1.savefig('Long_Lead_13_figure.png')
+		fig1.savefig(Leads_13_path)
 
 		return Leads
 
@@ -127,7 +132,9 @@ class ECG:
 				ax2[x_counter][y_counter].axis('off')
 				ax2[x_counter][y_counter].set_title("pre-processed Leads {} image".format(x+1))
 				y_counter+=1
-		fig2.savefig('Preprossed_Leads_1-12_figure.png')
+
+		PreprossedLeads_1_12_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../Preprossed_Leads_1-12_figure.png"))
+		fig2.savefig(PreprossedLeads_1_12_path)
 
 		#plotting lead 13
 		fig3 , ax3 = plt.subplots()
@@ -145,7 +152,9 @@ class ECG:
 		ax3.imshow(binary_global,cmap='gray')
 		ax3.set_title("Leads 13")
 		ax3.axis('off')
-		fig3.savefig('Preprossed_Leads_13_figure.png')
+
+		Preprossed_Leads_13_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../Preprossed_Leads_13_figure.png"))
+		fig3.savefig(Preprossed_Leads_13_path)
 
 
 	def SignalExtraction_Scaling(self,Leads):
@@ -201,7 +210,8 @@ class ECG:
 			else:
 				Normalized_Scaled.to_csv('Scaled_1DLead_{lead_no}.csv'.format(lead_no=lead_no+1),index=False)
 	      
-		fig4.savefig('Contour_Leads_1-12_figure.png')
+		Contour_Leads_1_12_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../Contour_Leads_1-12_figure.png"))
+		fig4.savefig(Contour_Leads_1_12_path)
 
 
 	def CombineConvert1Dsignal(self):

@@ -28,8 +28,11 @@ class HeartDisease:
 
 		self.ECG = ECG()
 
-		self.DM_model = joblib.load('D:/Personals/Projects/ProDoctor/services/Models/PCA_ECG.pkl')
-		self.predict_model = joblib.load('D:/Personals/Projects/ProDoctor/services/Models/Heart_Disease_Prediction_using_ECG.pkl')
+		model_PCA_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../Models/PCA_ECG.pkl"))
+		model_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../Models/Heart_Disease_Prediction_using_ECG.pkl"))
+	
+		self.DM_model = joblib.load(model_PCA_path)
+		self.predict_model = joblib.load(model_path)
 
 	
 	def predict(self, image):
@@ -67,8 +70,8 @@ class HeartDisease:
 
 		for i in range(1, 13):
 
-			file_path = f"D:/Personals/Projects/ProDoctor/Scaled_1DLead_{i}.csv"
-
+			file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), f"../Scaled_1DLead_{i}.csv")) 
+			 
 			if os.path.exists(file_path):
 				os.remove(file_path)
 				   
@@ -85,8 +88,8 @@ class HeartDisease:
 		for img in processing_images:
 			
 			file_name = processing_images[img]
-			file_path = f"D:/Personals/Projects/ProDoctor/services/{file_name}"
-			
+			file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), f"../{file_name}"))
+
 			if not os.path.exists(file_path):
 				continue
 				
@@ -106,6 +109,6 @@ class HeartDisease:
 
 # heartDiseases = HeartDiseases()
 
-# resul = heartDiseases.predict("D:/Personals/Projects/ProDoctor/services/heart_diseases/Dataset/History_of_MI/PMI(6).jpg")
+# resul = heartDiseases.predict("../heart_diseases/Dataset/History_of_MI/PMI(6).jpg")
 
 # print(resul, 'resul')

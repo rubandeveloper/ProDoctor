@@ -1,3 +1,4 @@
+import os
 from PIL import Image
 import numpy as np
 import keras 
@@ -10,7 +11,9 @@ class SkinDisease(object):
 
     def __init__(self) -> None:
 
-        self.model = load_model('D:/Personals/Projects/ProDoctor/services/skin_diseases/skin_diseases_DLmodel_1.h5')
+        model_path = "../Models/skin_diseases_DLmodel_1.h5"
+        model_path = os.path.abspath(os.path.join(os.path.dirname(__file__), model_path))
+        self.model = load_model(model_path)
         
     
     def predict(self, image):

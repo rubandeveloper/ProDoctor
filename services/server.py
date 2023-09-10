@@ -11,13 +11,19 @@ from dotenv import load_dotenv
 import logging
 from io import BytesIO
 from logging.handlers import RotatingFileHandler
+import gdown
+import zipfile
 
 from Database.MongoConnection import MongoDB
 from Predictor.BrainTumor import BrainTumor
 from Predictor.SkinDisease import SkinDisease
 from Predictor.HeartDisease import HeartDisease
 
+from DownloadModelFiles import downloadModelFiles
+
 load_dotenv()
+
+# downloadModelFiles()
 
 """ DB and bottle server Initializing"""
 app = Bottle()
@@ -143,7 +149,9 @@ def deleteSolution():
     }
 
 
+
+
 if __name__ == "__main__":
     # MongoDB.initialize()
 
-    run(host=os.getenv("host"), port=os.getenv("port"))
+    run(host="localhost", port=8080)

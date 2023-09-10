@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/static/css/main.775d16f8.css",
+    "main.js": "/static/js/main.095ede58.js",
+    "static/media/estimate_feature.mp4": "/static/media/estimate_feature.49c7e7b0ccb20f8944af.mp4",
+    "static/media/schedule_feature.mp4": "/static/media/schedule_feature.93c8510c791b8675b4e4.mp4",
+    "static/media/banner.png": "/static/media/banner.5dae15638aefcdff762e.png",
+    "static/media/app_banner.jpg": "/static/media/app_banner.98a58a88e117efbfa48d.jpg",
+    "static/media/workdemo.png": "/static/media/workdemo.9cc0e8829efecf624d03.png",
+    "static/media/landing_top_banner.png": "/static/media/landing_top_banner.272393e276734715cb7f.png",
+    "static/media/all_devices.png": "/static/media/all_devices.db017f0c1949e3a01a31.png",
+    "static/media/workdemo.webm": "/static/media/workdemo.1205b9ca07837368457b.webm",
+    "static/media/ecg-default.jpg": "/static/media/ecg-default.1dc134c31dedcf04afed.jpg",
+    "static/media/bp-default.png": "/static/media/bp-default.56d48793fc4c0105404b.png",
+    "static/media/illustration_proposal_feature.webp": "/static/media/illustration_proposal_feature.f9c84716aef0bc560274.webp",
+    "static/media/illustration_takeoff_feature.webp": "/static/media/illustration_takeoff_feature.97fcf05d30686a22869f.webp",
+    "static/media/brain_tumor.png": "/static/media/brain_tumor.7b79544fcf21d784a03b.png",
+    "static/media/skin_diseases.png": "/static/media/skin_diseases.a3585f7db4c4fb807c3a.png",
+    "static/media/random_patient.jpg": "/static/media/random_patient.385dc257a56c8f9fc38b.jpg",
+    "static/media/eraser.png": "/static/media/eraser.857dc1a50de7fca1212b.png",
+    "static/media/ECG.png": "/static/media/ECG.f0406dc4417612bee581.png",
+    "static/media/user.png": "/static/media/user.a6143582309785dca610.png",
+    "static/media/pen.png": "/static/media/pen.2e01b5177caa0d0a9bf2.png",
+    "static/media/upload-doc.png": "/static/media/upload-doc.70097e357df1ffa3c9ab.png",
+    "static/media/background_1.svg": "/static/media/background_1.5d37529d9c1911edd3df9b274733cd95.svg",
+    "index.html": "/index.html",
+    "main.775d16f8.css.map": "/static/css/main.775d16f8.css.map",
+    "main.095ede58.js.map": "/static/js/main.095ede58.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.775d16f8.css",
+    "static/js/main.095ede58.js"
+  ]
+}

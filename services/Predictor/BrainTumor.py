@@ -2,13 +2,16 @@ from PIL import Image
 import numpy as np
 import keras 
 from matplotlib.pyplot import imshow
-
+import os
 
 class BrainTumor(object):
 
     def __init__(self) -> None:
 
-        self.model = keras.models.load_model('D:/Personals/Projects/ProDoctor/services/Models/brain_tumor_DLmodel.h5')
+        model_path = "../Models/brain_tumor_DLmodel.h5"
+        model_path = os.path.abspath(os.path.join(os.path.dirname(__file__), model_path))
+        
+        self.model = keras.models.load_model(model_path)
         
     
     def predict(self, image):
@@ -22,8 +25,6 @@ class BrainTumor(object):
         img = Image.open(image)
         x = np.array(img.resize((128,128)))
 
-        print(x.shape, (128,128,3), '/n')
-
         if x.shape != (128,128,3):
             return {
                 "success": True,
@@ -33,9 +34,6 @@ class BrainTumor(object):
         x = x.reshape(1,128,128,3)
         res = self.model.predict_on_batch(x)
         classification = np.where(res == np.amax(res))[1][0]
-
-
-        print(classification, str(res[0][classification]*100) + '% Confidence This Is ' + names(classification))
 
         accuracy = str(res[0][classification]*100)
         hasDisesase = True if classification == 0 else False
