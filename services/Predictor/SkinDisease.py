@@ -1,7 +1,6 @@
 import os
 from PIL import Image
 import numpy as np
-import keras 
 from matplotlib.pyplot import imshow
 import cv2
 from tensorflow.keras.models import load_model

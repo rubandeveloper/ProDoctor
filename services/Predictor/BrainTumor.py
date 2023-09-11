@@ -1,6 +1,6 @@
 from PIL import Image
 import numpy as np
-import keras 
+from tensorflow.keras.models import load_model
 from matplotlib.pyplot import imshow
 import os
 
@@ -11,7 +11,7 @@ class BrainTumor(object):
         model_path = "../Models/brain_tumor_DLmodel.h5"
         model_path = os.path.abspath(os.path.join(os.path.dirname(__file__), model_path))
         
-        self.model = keras.models.load_model(model_path)
+        self.model = load_model(model_path)
         
     
     def predict(self, image):
